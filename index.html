@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('11.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.title{
+    text-align: center;
+    font-size: 50px;
+    margin:40px 0;
+}
+
+.wrapper{
+    height: 400px;
+    width:400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    color:white;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-box{
+    width:300px;
+    height:120px !important;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.remember{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.input-common{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.image{
+    width:300px;
+    height: 150px;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}
+.btn1{
+    width: 300px;
+    height: 50px;
+    background-color: rgb(223, 19, 19);
+    color:white;
+    border-radius: 10px;
+    margin-top:10px;
+}
+
+.forgot-c{
+    margin:20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.forgot{
+    text-decoration: none;
+    color:white;
+}
+
+.merged-input {
+    display: flex;
+}
+
+.input-common input {
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    padding: 10px;
+    flex: 1; 
+}
+
+.input-common input:first-child {
+    border-bottom-left-radius: 0; 
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+
+.input-common input:last-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; 
+     border-top: none;
+}
+
+</style>
+<body>
+    <div class="wrapper">
+        <form action="" id="loginForm">
+            <image src="image.png" class="image" />
+
+            <div class="input-common">
+                <input type="text" class="text-box" placeholder="E-mail address"
+                required>
+
+                <input type="password" id="password" class="text-box" placeholder="Password" required>
+
+        </div>
+            <div class="remember">
+                <label> <input type="checkbox">Remember me</label>
+            </div>
+            <div class="btn">
+            <button type="submit" class="btn1">Sign In</button>
+        </div>
+            <div class="forgot-c">
+                <a href="mailto:support@zentrades.pro?subject=Password%20Reset%20Request" class="forgot">Forgot your password? </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+     const passwordInput = document.getElementById('password');
+    passwordInput.addEventListener('input', function() {
+        const password = passwordInput.value;
+        const containsUpperCase = /[A-Z]/.test(password);
+        const containsNumber = /[0-9]/.test(password);
+        const containsSpecial = /[^A-Za-z0-9@]/.test(password);
+
+        if (!containsUpperCase || !containsNumber || containsSpecial) {
+           
+            passwordInput.setCustomValidity("Invalid password");
+        } else {
+            passwordInput.setCustomValidity('');
+        }
+    });
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); 
+  var password = document.getElementById("password").value;
+
+  if (password === "ZenTradesTest@123") {
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Incorrect password. Please try again.");
+  }
+});
+</script>
